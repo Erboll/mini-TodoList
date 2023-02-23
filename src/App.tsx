@@ -11,9 +11,10 @@ function App() {
   ]);
   const [task, setTask] = useState('');
 
+
   const onSubmit = (event:React.FormEvent) => {
     event.preventDefault();
-    setTasks(prev => [...prev, {task , id: Math.random()}]);
+    setTasks(prev => [...prev, {task, id: Math.random()}]);
     setTask('');
   };
   const onDelete = (id:number) => {
@@ -29,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <AddTaskForm onSubmit={onSubmit} onChange={changeInput}/>
+      <AddTaskForm name={task} onSubmit={onSubmit} onChange={changeInput}/>
       {tasks.map(task => (
         <Task onDelete={() => onDelete(task.id)} key={task.id} text={task.task}></Task>
       ))}
